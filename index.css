@@ -80,17 +80,19 @@ button {
 
 #page_top {
   position: fixed;
-  right: 1em;
-  bottom: 1em;
-  width: 4em;
-  height: 4em;
+  right: 1.5em;
+  bottom: 1.5em;
+  width: 3.5em;
+  height: 3.5em;
   padding: 0;
   line-height: 1;
+  font-size: 1em;
   text-align: center;
-  border-radius: .5em;
+  border-radius: 2em;
   border-color: #94cb5d;
   background: #61a83a;
-  color: white; }
+  color: white;
+  box-shadow: 2px 2px 8px #80808082; }
 
 .comment {
   background-color: white;
