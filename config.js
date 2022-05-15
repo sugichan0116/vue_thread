@@ -30,46 +30,20 @@ export const auth = fb_auth.getAuth();
 
 const path = "testcollection";
 
-export const loader = async function ()
-{
+
+export const loader = function (callback) {
     const ref = fb_fs.collection(db, path);
     const query = fb_fs.query(
         ref,
         fb_fs.orderBy("date", "desc"),
         fb_fs.limit(10)
     )
-    const snap = await fb_fs.getDocs(query);
 
-    console.log(snap.docs);
-    // console.log(snap.docs[0].id);
-
-    const general = fb_fs.doc(db, "setting", "general");
-
-    fb_fs.getDoc(general)
-        .then(function (snap) {
-            const count = snap.get("count");
-            console.log("count=", count);
-        })
-
-    return {
-        snap: snap,
-        "list": snap.docs.map(d => {
-            return {name: d.id, content: d.data()};
-        }),
-    };
+    fb_fs.onSnapshot(query, (collection) => {
+        callback(collection);
+    });
 }
 
-
-// export const realtimeLoader = function ()
-// {
-//     // const ref = fb_fs.collection(db, path);
-//     // ref.
-//     db.ref(path).onChildAdded()
-// }
-
-
-// todo: onvalueで監視
-//https://firebase.google.com/docs/database/web/read-and-write?hl=ja
 
 export const postDoc = async function (comment)
 {
@@ -90,8 +64,3 @@ export const postDoc = async function (comment)
             console.log("count=", count);
         })
 }
-
-// await setDoc(doc(citiesRef, "SF"), {
-//     name: "San Francisco", state: "CA", country: "USA",
-//     capital: false, population: 860000,
-//     regions: ["west_coast", "norcal"] });

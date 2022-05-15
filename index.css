@@ -16,6 +16,14 @@ body {
   border-radius: .1em;
 }
 
+.author {
+  margin: 0.2em;
+}
+
+.content {
+  margin: 0.2em;
+}
+
 #main {
   margin: 2em auto;
   display: grid;

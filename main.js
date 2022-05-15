@@ -1,21 +1,26 @@
-import {loader, postDoc} from "./config.js";
+import {db, fb_fs, loader, postDoc} from "./config.js";
 
 
-var fire = new Vue({
+const fire = new Vue({
     el: '#main',
     data: {
         snap: undefined,
-        // docs: [{ name: "none", content:"loading" }],
+        count: -1,
     },
     methods: {
         docs: function () {
             if(this.snap === undefined) {
-                return [{ name: "none", content:"loading" }];
+                return [];
             }
 
             return this.snap.docs.map(d => {
                 return {name: d.id, content: d.data()};
             })
+        }
+    },
+    computed: {
+        loading: function () {
+            return this.snap === undefined;
         }
     }
 })
@@ -42,7 +47,12 @@ new Vue({
 })
 
 
-// const list = (await loader())['list'];
-// fire.docs = list;
+loader(function (snap) {
+    fire.snap = snap;
+})
 
-fire.snap = (await loader())['snap']
+fb_fs.onSnapshot(fb_fs.doc(db, "setting", "general"), (doc) => {
+    console.log("setting", doc.data());
+    console.log("setting count=", doc.data().count);
+    fire.count = doc.data().count;
+})

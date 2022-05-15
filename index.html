@@ -20,21 +20,30 @@
                 <button type="submit">post</button>
             </form>
         </div>
+        <div>匿名でなかよくお話ししよう|:3ミ</div>
     </div>
 
 
 
     <div id="main">
+<!--        <div>-->
+<!--            count = {{ count }}(test)-->
+<!--        </div>-->
         <div v-for="(doc, index) in docs()"
              :key="doc.name"
              class="comment"
         >
-            <h6>
-                {{ doc.content.author }}
-            </h6>
-            <div>
+            <div class="author">
+                name :
+                <b>{{ doc.content.author }}</b>
+            </div>
+            <div class="content">
                 {{ doc.content.comment }}
             </div>
+        </div>
+
+        <div v-show="loading">
+            よみこんでいるよ
         </div>
     </div>
 
