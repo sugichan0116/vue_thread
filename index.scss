@@ -5,12 +5,42 @@ body {
   font-family: Verdana, Roboto, "Droid Sans", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
 }
 
-h1 {
-  margin-bottom: 0;
+#pagination {
+  list-style: none;
+  margin: 1em;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 12px;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+
+    &:hover {
+      border-color: grey;
+    }
+  }
 }
 
-.subtitle {
-  margin-top: 0;
+button {
+  margin: 0.5em auto;
+  padding: 0.6em 1.2em;
+
+  text-align: center;
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  background-color: white;
+  transition: all 150ms ease;
+
+  &:hover {
+    background-color: #61a83a;
+    color: white;
+    border-color: #94cb5d;
+  }
 }
 
 #form {
@@ -18,6 +48,7 @@ h1 {
   max-width: 80%;
   display: grid;
   place-items: center;
+  margin: 1em;
 
   form {
     width: 100%;
@@ -33,7 +64,21 @@ h1 {
 #menu {
   display: grid;
   place-items: center;
-  padding: 2em;
+  padding: 1em;
+  //border-top: solid darkgrey;
+  border-bottom: solid #e7e7e7;
+
+  h1 {
+    border-bottom: solid #61a83a;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  .subtitle {
+    margin-top: 0.5em;
+    font-size: 0.8em;
+  }
+
 }
 
 .comment {
@@ -65,4 +110,17 @@ h1 {
   display: grid;
   place-items: center;
   background-color: whitesmoke;
+}
+
+#comments {
+  display: grid;
+  place-items: center;
+}
+
+.footer {
+  padding: 2em;
+  background-color: grey;
+  color: white;
+  display: grid;
+  place-items: center;
 }

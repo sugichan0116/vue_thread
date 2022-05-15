@@ -30,21 +30,6 @@ export const auth = fb_auth.getAuth();
 
 const path = "testcollection";
 
-
-export const loader = function (callback) {
-    const ref = fb_fs.collection(db, path);
-    const query = fb_fs.query(
-        ref,
-        fb_fs.orderBy("date", "desc"),
-        fb_fs.limit(10)
-    )
-
-    fb_fs.onSnapshot(query, (collection) => {
-        callback(collection);
-    });
-}
-
-
 export const postDoc = async function (author, comment)
 {
     const ref = fb_fs.collection(db, path);

@@ -5,6 +5,9 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!--    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">-->
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -28,7 +31,7 @@
                            placeholder="...">
                     </textarea>
                 </div>
-                <button type="submit">post</button>
+                <button class="ui button" type="submit">Post</button>
             </form>
         </div>
     </div>
@@ -36,28 +39,44 @@
 
 
     <div id="main">
-<!--        <div>-->
-<!--            count = {{ count }}(test)-->
-<!--        </div>-->
-        <div v-for="(doc, index) in docs()"
-             :key="doc.name"
-             class="comment"
-        >
-            <div class="author">
-                <small>name :</small>
-                <b>{{ doc.content.author }}</b>
+        <div id="comments">
+            <div v-for="(doc, index) in docs()"
+                 :key="doc.name"
+                 class="comment"
+            >
+                <div class="author">
+                    <small>name :</small>
+                    <b>{{ doc.content.author }}</b>
+                </div>
+                <div class="content">
+                    {{ doc.content.comment }}
+                </div>
             </div>
-            <div class="content">
-                {{ doc.content.comment }}
+
+            <div v-show="loading">
+                よみこんでいるよ
             </div>
         </div>
 
-        <div v-show="loading">
-            よみこんでいるよ
-        </div>
+        <ul id="pagination">
+            <li v-for="page in page_length"
+                :key="page"
+                v-on:click="movePage(page)"
+                style="width: 10em;"
+                class="page">
+<!--                {{ page }}-->
+                read more
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="footer">
+        <small>Powered By PNGN</small>
     </div>
 
     <script type="module" src="./config.js"></script>
     <script type="module" src="./main.js"></script>
+
 </body>
 </html>
