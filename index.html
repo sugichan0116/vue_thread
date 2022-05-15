@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div id="menu">
+        <h1>にこにこ掲示板☺</h1>
+
+        <div id="form">
+            <form v-on:submit.prevent="post">
+                <label>comment</label>
+                <input type="text"
+                       v-model="comment"
+                       placeholder="...">
+                <button type="submit">post</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div id="main">
+        <div v-for="(doc, index) in docs()"
+             :key="doc.name"
+             class="comment"
+        >
+            <h6>
+                {{ doc.content.author }}
+            </h6>
+            <div>
+                {{ doc.content.comment }}
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./config.js"></script>
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

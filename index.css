@@ -1,0 +1,23 @@
+body {
+  height: 100%;
+}
+
+#menu {
+  display: grid;
+  place-items: center;
+}
+
+.comment {
+  width: 80%;
+  max-width: 700px;
+  padding: 1em;
+  margin: .5em;
+  border: solid gray 1px;
+  border-radius: .1em;
+}
+
+#main {
+  margin: 2em auto;
+  display: grid;
+  place-items: center;
+}
