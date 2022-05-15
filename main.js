@@ -80,11 +80,12 @@ const publish_query = function (ref, page, order=10) {
 }
 
 const ref = fb_fs.collection(db, "testcollection");
+let unsubscribe = undefined;
 const loader = function (callback) {
-    // fb_fs.unsubscribe();
+    if(unsubscribe !== undefined) unsubscribe();
 
     const query = publish_query(ref, pagination.page);
-    fb_fs.onSnapshot(query, function (snap) {
+    unsubscribe = fb_fs.onSnapshot(query, function (snap) {
         console.log("load snap");
         fire.snap = snap;
     });
@@ -94,10 +95,3 @@ loader();
 reload = function (page) {
     loader();
 }
-
-// //count test
-// fb_fs.onSnapshot(fb_fs.doc(db, "setting", "general"), (doc) => {
-//     console.log("setting", doc.data());
-//     console.log("setting count=", doc.data().count);
-//     fire.count = doc.data().count;
-// })
