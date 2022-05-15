@@ -12,6 +12,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-firestore.js";
 
 
+/// vue components
 const fire = new Vue({
     el: '#comments',
     data: {
@@ -72,10 +73,6 @@ const form = new Vue({
     }
 });
 
-let reload = function (page) {
-    console.log("error");
-};
-
 const pagination = new Vue({
     el: '#pagination',
     data: {
@@ -87,7 +84,7 @@ const pagination = new Vue({
             console.log("move to page", page);
             // this.page = page;
             this.page++;
-            reload(page);
+            loader(page);
         }
     }
 });
@@ -105,28 +102,32 @@ const page_top = new Vue({
 })
 
 
+/// methods
+const loader = (function() {
+    const publish_query = function (ref, page, order=10) {
+        return query(
+            ref,
+            orderBy("date", "desc"),
+            endAt((page - 0) * order),
+            limit(order * page),
+        );
+    }
 
-const publish_query = function (ref, page, order=10) {
-    return query(
-        ref,
-        orderBy("date", "desc"),
-        endAt((page - 0) * order),
-        limit(order * page),
-    );
-}
+    let unsubscribe = undefined;
 
-let unsubscribe = undefined;
-const loader = function (callback) {
-    if(unsubscribe !== undefined) unsubscribe();
+    return function (callback) {
+        if(unsubscribe !== undefined) unsubscribe();
 
-    const query = publish_query(collection_ref, pagination.page);
-    unsubscribe = onSnapshot(query, function (snap) {
-        console.log("load snap");
-        fire.count = snap.size;
-        fire.snap = snap;
-    });
-};
+        const query = publish_query(collection_ref, pagination.page);
 
-reload = loader;
+        unsubscribe = onSnapshot(query, function (snap) {
+            console.log("load snap");
+            fire.snap = snap;
+            fire.count = snap.size;
+        });
+    };
+})();
 
+
+// initial comment load
 loader();
