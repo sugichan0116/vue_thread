@@ -1,12 +1,14 @@
 body {
   height: 100%;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+}
 
 #menu {
   display: grid;
   place-items: center;
-  padding: 2em; }
+  padding: 2em;
+}
 
 .comment {
   background-color: white;
@@ -16,19 +18,25 @@ body {
   margin: 0em .5em;
   border: solid gray;
   border-width: 0px 1px 1px;
-  border-radius: .1em; }
-  .comment:first-child {
-    border-top-width: 1px !important; }
+  border-radius: .1em;
+
+  &:first-child {
+    border-top-width: 1px !important;
+  }
+}
 
 .author {
-  margin: 0.2em; }
+  margin: 0.2em;
+}
 
 .content {
-  margin: 0.2em; }
+  margin: 0.2em;
+}
 
 #main {
   margin: auto;
   padding: 2em 0;
   display: grid;
   place-items: center;
-  background-color: whitesmoke; }
+  background-color: whitesmoke;
+}
