@@ -114,11 +114,8 @@ button {
   .comment .content {
     white-space: pre-line; }
 
-.author, .meta, .content {
+.author, .content {
   margin: 0.2em; }
-
-.meta {
-  padding-top: 0.4em; }
 
 #main {
   margin: auto;
