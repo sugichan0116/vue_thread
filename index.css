@@ -28,7 +28,8 @@ button {
   border: 1px #ccc solid;
   border-radius: 5px;
   background-color: white;
-  transition: all 150ms ease; }
+  transition: all 150ms ease;
+  color: #222; }
   button:hover {
     background-color: #61a83a;
     color: white;
