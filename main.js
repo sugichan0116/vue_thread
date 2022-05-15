@@ -113,6 +113,7 @@ const loader = function (callback) {
     const query = publish_query(ref, pagination.page);
     unsubscribe = fb_fs.onSnapshot(query, function (snap) {
         console.log("load snap");
+        fire.count = snap.size;
         fire.snap = snap;
     });
 };

@@ -47,24 +47,31 @@
 
     <div id="main">
         <div id="comments">
-            <div v-for="(doc, index) in docs()"
-                 :key="doc.name"
-                 class="comment"
-            >
-                <div class="author">
-                    <small>name :</small>
-                    <b>{{ doc.content.author }}</b>
+            <div>
+                {{ count }} 件のコメント
+            </div>
 
-                    <span class="meta">
+            <div class="body">
+                <div v-for="(doc, index) in docs()"
+                     :key="doc.name"
+                     class="comment"
+                >
+                    <div class="author">
+                        <small>name :</small>
+                        <b>{{ doc.content.author }}</b>
+
+                        <span class="meta">
                         <small class="date">
                             {{ toDate(doc.content.create_at) }}
                         </small>
                     </span>
+                    </div>
+
+                    <div class="content">{{ doc.content.comment.replace(/\\n/g,'\n') }}</div>
+
                 </div>
-
-                <div class="content">{{ doc.content.comment.replace(/\\n/g,'\n') }}</div>
-
             </div>
+
 
             <div v-show="loading">
                 よみこんでいるよ

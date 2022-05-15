@@ -95,7 +95,6 @@ button {
   display: grid;
   place-items: center;
   padding: 1em;
-  border-Top: solid #61a83a;
   border-bottom: solid #e7e7e7;
 
   h1 {
@@ -171,6 +170,12 @@ button {
   width: 100%;
   display: grid;
   place-items: center;
+
+  .body {
+    width: 100%;
+    display: grid;
+    place-items: center;
+  }
 }
 
 .footer {

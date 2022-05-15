@@ -73,7 +73,6 @@ button {
   display: grid;
   place-items: center;
   padding: 1em;
-  border-Top: solid #61a83a;
   border-bottom: solid #e7e7e7; }
   #menu h1 {
     border-bottom: dashed #61a83a;
@@ -129,6 +128,10 @@ button {
   width: 100%;
   display: grid;
   place-items: center; }
+  #comments .body {
+    width: 100%;
+    display: grid;
+    place-items: center; }
 
 .footer {
   padding: 2em;
