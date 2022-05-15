@@ -83,6 +83,11 @@ button {
       border-radius: 3px; /*ボックス角の丸み*/
       border: 2px solid #ddd; /*枠線*/
       box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+
+      &:focus {
+        border: 2px solid #61a83a;
+        outline: 0;
+      }
     }
   }
   #post_log {

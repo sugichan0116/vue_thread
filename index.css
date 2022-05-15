@@ -64,6 +64,9 @@ button {
       /*枠線*/
       box-sizing: border-box;
       /*横幅の解釈をpadding, borderまでとする*/ }
+      #form form input:focus, #form form textarea:focus {
+        border: 2px solid #61a83a;
+        outline: 0; }
   #form #post_log {
     font-size: 0.8em;
     text-align: center; }
