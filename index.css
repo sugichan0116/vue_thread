@@ -73,9 +73,10 @@ button {
   display: grid;
   place-items: center;
   padding: 1em;
+  border-Top: solid #61a83a;
   border-bottom: solid #e7e7e7; }
   #menu h1 {
-    border-bottom: solid #61a83a;
+    border-bottom: dashed #61a83a;
     line-height: 1.4;
     margin-bottom: 0; }
   #menu .subtitle {
