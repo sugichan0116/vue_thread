@@ -38,6 +38,7 @@ export const postDoc = async function (author, comment)
         comment: comment,
         author: author,
         date: Date.now(),
+        create_at: fb_fs.serverTimestamp(),
     });
 
 

@@ -60,7 +60,14 @@
                     <small>name :</small>
                     <b>{{ doc.content.author }}</b>
                 </div>
+
                 <div class="content">{{ doc.content.comment.replace(/\\n/g,'\n') }}</div>
+
+                <div class="meta">
+                    <small class="date">
+                        {{ toDate(doc.content.create_at) }}
+                    </small>
+                </div>
             </div>
 
             <div v-show="loading">

@@ -26,6 +26,11 @@ body {
   }
 }
 
+.header {
+  display: grid;
+  place-items: center;
+}
+
 button {
   margin: 0.5em auto;
   padding: 0.6em 1.4em;
@@ -145,12 +150,12 @@ button {
   }
 }
 
-.author {
+.author, .meta, .content {
   margin: 0.2em;
 }
 
-.content {
-  margin: 0.2em;
+.meta {
+  padding-top: 0.4em;
 }
 
 #main {

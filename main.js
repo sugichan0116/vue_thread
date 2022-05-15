@@ -16,7 +16,10 @@ const fire = new Vue({
             return this.snap.docs.map(d => {
                 return {name: d.id, content: d.data()};
             })
-        }
+        },
+        toDate: function (date) {
+            return (date === undefined) ? "???" : date.toDate();
+        },
     },
     computed: {
         loading: function () {

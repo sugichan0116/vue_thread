@@ -21,6 +21,10 @@ body {
     #pagination li:hover {
       border-color: grey; }
 
+.header {
+  display: grid;
+  place-items: center; }
+
 button {
   margin: 0.5em auto;
   padding: 0.6em 1.4em;
@@ -110,11 +114,11 @@ button {
   .comment .content {
     white-space: pre-line; }
 
-.author {
+.author, .meta, .content {
   margin: 0.2em; }
 
-.content {
-  margin: 0.2em; }
+.meta {
+  padding-top: 0.4em; }
 
 #main {
   margin: auto;
