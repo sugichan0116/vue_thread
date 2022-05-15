@@ -24,6 +24,7 @@ body {
 button {
   margin: 0.5em auto;
   padding: 0.6em 1.2em;
+  font-size: .9em;
   text-align: center;
   border: 1px #ccc solid;
   border-radius: 5px;
@@ -47,6 +48,17 @@ button {
     place-items: center; }
     #form form div, #form form textarea, #form form div input {
       width: 100%; }
+    #form form div {
+      margin: 0.2em; }
+    #form form input, #form form textarea {
+      padding: 10px 15px;
+      /*ボックスを大きくする*/
+      border-radius: 3px;
+      /*ボックス角の丸み*/
+      border: 2px solid #ddd;
+      /*枠線*/
+      box-sizing: border-box;
+      /*横幅の解釈をpadding, borderまでとする*/ }
 
 #menu {
   display: grid;
