@@ -28,8 +28,8 @@ body {
 
 button {
   margin: 0.5em auto;
-  padding: 0.6em 1.2em;
-  font-size: .9em;
+  padding: 0.6em 1.4em;
+  font-size: .8em;
 
   text-align: center;
   border: 1px #ccc solid;
@@ -66,6 +66,7 @@ button {
     }
 
     input, textarea {
+      font-size:16px;
       padding: 10px 15px; /*ボックスを大きくする*/
       border-radius: 3px; /*ボックス角の丸み*/
       border: 2px solid #ddd; /*枠線*/
