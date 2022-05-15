@@ -13,8 +13,10 @@
 <body>
 
     <div id="menu">
-        <h1>にこにこ掲示板☺</h1>
-        <p class="subtitle">匿名でなかよくお話ししよう|:3ミ</p>
+        <div class="header">
+            <h1>にこにこ掲示板☺</h1>
+            <p class="subtitle">匿名でなかよくお話ししよう|:3ミ</p>
+        </div>
 
         <div id="form">
             <div v-if="show_form">
@@ -40,6 +42,10 @@
                 <button v-on:click="awake_form">投稿してみる！</button>
             </div>
         </div>
+
+        <button class="page_top" @click="scrollTop">
+            Top
+        </button>
     </div>
 
 

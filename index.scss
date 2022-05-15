@@ -79,11 +79,17 @@ button {
   }
 }
 
+
+
 #menu {
+  //background-color: white;
+  //position: sticky;
+  //top: 0;
+
+  background-color: white;
   display: grid;
   place-items: center;
   padding: 1em;
-  //border-top: solid darkgrey;
   border-bottom: solid #e7e7e7;
 
   h1 {
@@ -97,6 +103,21 @@ button {
     font-size: 0.8em;
   }
 
+}
+
+.page_top {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  width: 4em;
+  height: 4em;
+  padding: 0;
+  line-height: 1;
+  text-align: center;
+  border-radius: .5em;
+  border-color: #94cb5d;
+  background: #61a83a;
+  color: white;
 }
 
 .comment {
