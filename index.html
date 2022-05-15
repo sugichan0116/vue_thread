@@ -17,22 +17,27 @@
         <p class="subtitle">匿名でなかよくお話ししよう|:3ミ</p>
 
         <div id="form">
-            <form v-on:submit.prevent="post">
-                <div>
-<!--                    <label>name</label>-->
-                    <input type="text"
-                           v-model="author"
-                           placeholder="ななしのぺんぎん">
-                </div>
-                <div>
-<!--                    <label>comment</label>-->
-                    <textarea row="5"
-                           v-model="comment"
-                           placeholder="...">
+            <div v-if="show_form">
+                <form v-on:submit.prevent="post">
+                    <div>
+                        <!--                    <label>name</label>-->
+                        <input type="text"
+                               v-model="author"
+                               placeholder="ななしのぺんぎん">
+                    </div>
+                    <div>
+                        <!--                    <label>comment</label>-->
+                        <textarea row="5"
+                                  v-model="comment"
+                                  placeholder="...">
                     </textarea>
-                </div>
-                <button class="ui button" type="submit">Post</button>
-            </form>
+                    </div>
+                    <button type="submit">Post</button>
+                </form>
+            </div>
+            <div v-else="show_form" class="cover">
+                <button v-on:click="awake_form">投稿してみる！</button>
+            </div>
         </div>
     </div>
 

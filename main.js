@@ -30,6 +30,7 @@ new Vue({
     data: {
         author: "ななしのぺんぎん",
         comment: "",
+        show_form: false,
     },
     methods: {
         post: function () {
@@ -43,6 +44,9 @@ new Vue({
                 });
 
             this.comment = "";
+        },
+        awake_form: function () {
+            this.show_form = true;
         }
     }
 });
