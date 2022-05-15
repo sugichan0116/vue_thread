@@ -139,3 +139,6 @@ button {
   color: white;
   display: grid;
   place-items: center; }
+
+[v-cloak] {
+  display: none; }

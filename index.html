@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>にこにこ掲示板</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-    <div id="menu">
+    <div id="menu" v-cloak>
         <div class="header">
             <h1>にこにこ掲示板☺</h1>
             <p class="subtitle">匿名でなかよくお話ししよう|:3ミ</p>
@@ -45,7 +46,7 @@
 
 
 
-    <div id="main">
+    <div id="main" v-cloak>
         <div id="comments">
             <div>
                 {{ count }} 件のコメント
@@ -92,14 +93,10 @@
     </div>
 
     <div class="footer">
-        <small>Powered By OYO pEngine</small>
+        <small>Powered By "P" Engine</small>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <!--    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>-->
-    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
-    <!--    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">-->
-    <link rel="stylesheet" href="index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
     <script type="module" src="./config.js"></script>

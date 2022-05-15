@@ -185,3 +185,7 @@ button {
   display: grid;
   place-items: center;
 }
+
+[v-cloak] {
+  display: none;
+}
