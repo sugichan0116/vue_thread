@@ -73,6 +73,10 @@ button {
       box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
     }
   }
+  #post_log {
+    font-size: 0.8em;
+    text-align: center;
+  }
 }
 
 #menu {
@@ -98,7 +102,7 @@ button {
 .comment {
   background-color: white;
   width: 80%;
-  max-width: 700px;
+  max-width: 620px;
   padding: 1em;
   margin: 0em .5em;
   border: solid gray;
@@ -107,6 +111,10 @@ button {
 
   &:first-child {
     border-top-width: 1px !important;
+  }
+
+  small {
+    color: green;
   }
 }
 
@@ -127,6 +135,7 @@ button {
 }
 
 #comments {
+  width: 100%;
   display: grid;
   place-items: center;
 }

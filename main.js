@@ -25,16 +25,21 @@ const fire = new Vue({
     }
 })
 
-new Vue({
+var form = new Vue({
     el: '#form',
     data: {
         author: "ななしのぺんぎん",
         comment: "",
         show_form: false,
+        post_log: "",
     },
     methods: {
         post: function () {
-            if(this.comment === "") return;
+            this.post_log = "";
+            if(this.comment === "") {
+                this.post_log = "メッセージを入力してね！"
+                return;
+            }
 
             console.log("post", this.comment);
 
