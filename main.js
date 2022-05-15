@@ -18,7 +18,7 @@ const fire = new Vue({
             })
         },
         toDate: function (date) {
-            return (date === undefined) ? "???" : date.toDate();
+            return (date == undefined) ? "???" : date.toDate();
         },
     },
     computed: {
