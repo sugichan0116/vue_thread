@@ -5,30 +5,8 @@ body {
   font-family: Verdana, Roboto, "Droid Sans", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
 }
 
-#pagination {
-  list-style: none;
-  margin: 1em;
-  padding: 0;
-
-  li {
-    display: inline-block;
-    height: 30px;
-    width: 30px;
-    text-align: center;
-    line-height: 30px;
-    font-size: 12px;
-    border: 1px #ccc solid;
-    border-radius: 5px;
-
-    &:hover {
-      border-color: grey;
-    }
-  }
-}
-
-.header {
-  display: grid;
-  place-items: center;
+[v-cloak] {
+  display: none;
 }
 
 button {
@@ -47,6 +25,35 @@ button {
     background-color: #61a83a;
     color: white;
     border-color: #94cb5d;
+  }
+}
+
+
+#menu {
+  //background-color: white;
+  //position: sticky;
+  //top: 0;
+
+  background-color: white;
+  display: grid;
+  place-items: center;
+  padding: 1em;
+  border-bottom: solid #e7e7e7;
+
+  h1 {
+    border-bottom: dashed #61a83a;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  .subtitle {
+    margin-top: 0.5em;
+    font-size: 0.8em;
+  }
+
+  .header {
+    display: grid;
+    place-items: center;
   }
 }
 
@@ -84,32 +91,6 @@ button {
   }
 }
 
-
-
-#menu {
-  //background-color: white;
-  //position: sticky;
-  //top: 0;
-
-  background-color: white;
-  display: grid;
-  place-items: center;
-  padding: 1em;
-  border-bottom: solid #e7e7e7;
-
-  h1 {
-    border-bottom: dashed #61a83a;
-    line-height: 1.4;
-    margin-bottom: 0;
-  }
-
-  .subtitle {
-    margin-top: 0.5em;
-    font-size: 0.8em;
-  }
-
-}
-
 #page_top {
   position: fixed;
   right: 1.5em;
@@ -120,6 +101,7 @@ button {
   line-height: 1;
   font-size: 1em;
   text-align: center;
+  border-width: 2px;
   border-radius: 2em;
   border-color: #94cb5d;
   background: #61a83a;
@@ -127,36 +109,6 @@ button {
   box-shadow: 2px 2px 8px #80808082;
 }
 
-.comment {
-  background-color: white;
-  width: 80%;
-  max-width: 620px;
-  padding: 1em;
-  margin: 0em .5em;
-  border: solid gray;
-  border-width: 0px 1px 1px;
-  border-radius: .1em;
-
-  &:first-child {
-    border-top-width: 1px !important;
-  }
-
-  small {
-    color: green;
-  }
-
-  .content {
-    white-space:pre-line;
-  }
-}
-
-.author, .content {
-  margin: 0.2em;
-}
-
-.meta {
-  //padding-top: 0.4em;
-}
 
 #main {
   margin: auto;
@@ -164,17 +116,65 @@ button {
   display: grid;
   place-items: center;
   background-color: whitesmoke;
-}
 
-#comments {
-  width: 100%;
-  display: grid;
-  place-items: center;
-
-  .body {
+  #comments {
     width: 100%;
     display: grid;
     place-items: center;
+
+    .body {
+      width: 100%;
+      display: grid;
+      place-items: center;
+    }
+  }
+
+  .comment {
+    background-color: white;
+    width: 80%;
+    max-width: 620px;
+    padding: 1em;
+    margin: 0em .5em;
+    border: solid gray;
+    border-width: 0px 1px 1px;
+    border-radius: .1em;
+
+    &:first-child {
+      border-top-width: 1px !important;
+    }
+
+    small {
+      color: green;
+    }
+
+    .content {
+      white-space:pre-line;
+    }
+  }
+
+  .author, .content {
+    margin: 0.2em;
+  }
+
+  #pagination {
+    list-style: none;
+    margin: 1em;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      height: 30px;
+      width: 30px;
+      text-align: center;
+      line-height: 30px;
+      font-size: 12px;
+      border: 1px #ccc solid;
+      border-radius: 5px;
+
+      &:hover {
+        border-color: grey;
+      }
+    }
   }
 }
 
@@ -184,8 +184,4 @@ button {
   color: white;
   display: grid;
   place-items: center;
-}
-
-[v-cloak] {
-  display: none;
 }

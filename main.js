@@ -1,11 +1,22 @@
-import {db, fb_fs, postDoc} from "./config.js";
+import {
+    collection_ref,
+    postDoc
+} from "./config.js";
+
+import {
+    query,
+    orderBy,
+    endAt,
+    limit,
+    onSnapshot,
+} from "https://www.gstatic.com/firebasejs/9.8.0/firebase-firestore.js";
 
 
 const fire = new Vue({
     el: '#comments',
     data: {
         snap: undefined,
-        count: -1,
+        count: 0,
     },
     methods: {
         docs: function () {
@@ -18,7 +29,6 @@ const fire = new Vue({
             })
         },
         toDate: function (date) {
-            // return (date == undefined) ? "???" : date.toDate();
             return (date == undefined) ? "???" : moment(date.toDate()).fromNow();
         },
     },
@@ -29,7 +39,7 @@ const fire = new Vue({
     }
 })
 
-var form = new Vue({
+const form = new Vue({
     el: '#form',
     data: {
         author: "ななしのぺんぎん",
@@ -82,7 +92,7 @@ const pagination = new Vue({
     }
 });
 
-new Vue({
+const page_top = new Vue({
     el: '#page_top',
     methods: {
         scrollTop: function(){
@@ -97,28 +107,26 @@ new Vue({
 
 
 const publish_query = function (ref, page, order=10) {
-    return fb_fs.query(
+    return query(
         ref,
-        fb_fs.orderBy("date", "desc"),
-        fb_fs.endAt((page - 0) * order),
-        fb_fs.limit(order * page),
-    )
+        orderBy("date", "desc"),
+        endAt((page - 0) * order),
+        limit(order * page),
+    );
 }
 
-const ref = fb_fs.collection(db, "testcollection");
 let unsubscribe = undefined;
 const loader = function (callback) {
     if(unsubscribe !== undefined) unsubscribe();
 
-    const query = publish_query(ref, pagination.page);
-    unsubscribe = fb_fs.onSnapshot(query, function (snap) {
+    const query = publish_query(collection_ref, pagination.page);
+    unsubscribe = onSnapshot(query, function (snap) {
         console.log("load snap");
         fire.count = snap.size;
         fire.snap = snap;
     });
 };
-loader();
 
-reload = function (page) {
-    loader();
-}
+reload = loader;
+
+loader();

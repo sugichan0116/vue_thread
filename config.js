@@ -1,12 +1,27 @@
+// // Import the functions you need from the SDKs you need
+// import * as _fb from "https://www.gstatic.com/firebasejs/9.8.0/firebase-app.js";
+// import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-database.js";
+// import * as _fb_fs from "https://www.gstatic.com/firebasejs/9.8.0/firebase-firestore.js";
+// // import {doc, collection, getFirestore, addDoc, getDocs, setDoc} from "https://www.gstatic.com/firebasejs/9.8.0/firebase-firestore.js";
+// import * as _fb_auth from "https://www.gstatic.com/firebasejs/9.8.0/firebase-auth.js";
+// // import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.8.0/firebase-auth.js";
+// // TODO: Add SDKs for Firebase products that you want to use
+// // https://firebase.google.com/docs/web/setup#available-libraries
+
+
 // Import the functions you need from the SDKs you need
-import * as _fb from "https://www.gstatic.com/firebasejs/9.8.0/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-database.js";
-import * as _fb_fs from "https://www.gstatic.com/firebasejs/9.8.0/firebase-firestore.js";
-// import {doc, collection, getFirestore, addDoc, getDocs, setDoc} from "https://www.gstatic.com/firebasejs/9.8.0/firebase-firestore.js";
-import * as _fb_auth from "https://www.gstatic.com/firebasejs/9.8.0/firebase-auth.js";
-// import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.8.0/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/9.8.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    setDoc,
+    doc,
+    serverTimestamp,
+} from "https://www.gstatic.com/firebasejs/9.8.0/firebase-firestore.js";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -20,33 +35,25 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const fb = _fb;
-export const app = fb.initializeApp(firebaseConfig);
-export const fb_fs = _fb_fs;
-export const db = fb_fs.getFirestore(app);
-export const fb_auth = _fb_auth;
-export const auth = fb_auth.getAuth();
-
-
-const path = "testcollection";
+export const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+export const collection_path = "testcollection";
+export const collection_ref = collection(db, collection_path);
 
 export const postDoc = async function (author, comment)
 {
-    const ref = fb_fs.collection(db, path);
-
-    await fb_fs.setDoc(fb_fs.doc(ref), {
+    await setDoc(doc(collection_ref), {
         comment: comment,
         author: author,
         date: Date.now(),
-        create_at: fb_fs.serverTimestamp(),
+        create_at: serverTimestamp(),
     });
 
-
-    const general = fb_fs.doc(db, "setting", "general");
-
-    fb_fs.getDoc(general)
-        .then(function (snap) {
-            const count = snap.get("count");
-            console.log("count=", count);
-        })
+    // const general = doc(db, "setting", "general");
+    //
+    // getDoc(general)
+    //     .then(function (snap) {
+    //         const count = snap.get("count");
+    //         console.log("count=", count);
+    //     })
 }
