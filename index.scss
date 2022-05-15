@@ -4,6 +4,31 @@ body {
   margin: 0;
 }
 
+h1 {
+  margin-bottom: 0;
+}
+
+.subtitle {
+  margin-top: 0;
+}
+
+#form {
+  width: 300px;
+  max-width: 80%;
+  display: grid;
+  place-items: center;
+
+  form {
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    div, textarea, div input{
+      width: 100%;
+    }
+  }
+}
+
 #menu {
   display: grid;
   place-items: center;

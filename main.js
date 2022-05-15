@@ -28,6 +28,7 @@ const fire = new Vue({
 new Vue({
     el: '#form',
     data: {
+        author: "ななしのぺんぎん",
         comment: "",
     },
     methods: {
@@ -36,7 +37,7 @@ new Vue({
 
             console.log("post", this.comment);
 
-            postDoc(this.comment)
+            postDoc(this.author, this.comment)
                 .then(function (){
                     console.log("done.")
                 });

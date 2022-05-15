@@ -45,13 +45,13 @@ export const loader = function (callback) {
 }
 
 
-export const postDoc = async function (comment)
+export const postDoc = async function (author, comment)
 {
     const ref = fb_fs.collection(db, path);
 
     await fb_fs.setDoc(fb_fs.doc(ref), {
         comment: comment,
-        author: "none",
+        author: author,
         date: Date.now(),
     });
 

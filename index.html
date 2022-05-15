@@ -10,17 +10,26 @@
 
     <div id="menu">
         <h1>にこにこ掲示板☺</h1>
+        <p class="subtitle">匿名でなかよくお話ししよう|:3ミ</p>
 
         <div id="form">
             <form v-on:submit.prevent="post">
-                <label>comment</label>
-                <input type="text"
-                       v-model="comment"
-                       placeholder="...">
+                <div>
+                    <label>name</label>
+                    <input type="text"
+                           v-model="author"
+                           placeholder="ななしのぺんぎん">
+                </div>
+                <div>
+<!--                    <label>comment</label>-->
+                    <textarea row="5"
+                           v-model="comment"
+                           placeholder="...">
+                    </textarea>
+                </div>
                 <button type="submit">post</button>
             </form>
         </div>
-        <div>匿名でなかよくお話ししよう|:3ミ</div>
     </div>
 
 
@@ -34,7 +43,7 @@
              class="comment"
         >
             <div class="author">
-                name :
+                <small>name :</small>
                 <b>{{ doc.content.author }}</b>
             </div>
             <div class="content">
