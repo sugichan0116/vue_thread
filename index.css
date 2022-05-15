@@ -90,6 +90,8 @@ button {
     border-top-width: 1px !important; }
   .comment small {
     color: green; }
+  .comment .content {
+    white-space: pre-line; }
 
 .author {
   margin: 0.2em; }

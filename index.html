@@ -54,9 +54,7 @@
                     <small>name :</small>
                     <b>{{ doc.content.author }}</b>
                 </div>
-                <div class="content">
-                    {{ doc.content.comment }}
-                </div>
+                <div class="content">{{ doc.content.comment.replace(/\\n/g,'\n') }}</div>
             </div>
 
             <div v-show="loading">

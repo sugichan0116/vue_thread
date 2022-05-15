@@ -41,6 +41,8 @@ var form = new Vue({
                 return;
             }
 
+            this.comment.replace(/\n/g,'\\n');
+
             console.log("post", this.comment);
 
             postDoc(this.author, this.comment)
