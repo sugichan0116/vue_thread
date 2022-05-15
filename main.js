@@ -79,7 +79,7 @@ const pagination = new Vue({
 });
 
 new Vue({
-    el: '#menu',
+    el: '#page_top',
     methods: {
         scrollTop: function(){
             window.scrollTo({

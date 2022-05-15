@@ -78,7 +78,7 @@ button {
     margin-top: 0.5em;
     font-size: 0.8em; }
 
-.page_top {
+#page_top {
   position: fixed;
   right: 1em;
   bottom: 1em;
