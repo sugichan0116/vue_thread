@@ -52,12 +52,17 @@ const form = new Vue({
         show_form: false,
         post_log: "",
         image_path: "",
+        image_uploading: false,
     },
     methods: {
         post: function () {
             this.post_log = "";
             if(this.comment === "") {
                 this.post_log = "メッセージを入力してね！"
+                return;
+            }
+            if(this.image_uploading) {
+                this.post_log = "画像をアップロード中だよ！"
                 return;
             }
 
@@ -80,9 +85,12 @@ const form = new Vue({
             const image = e.target.files[0];
             if(image == null) return;
 
+            this.image_uploading = true;
             uploadImage(image, (url) => {
                 console.log(this);
+
                 this.image_path = url;
+                this.image_uploading = false;
             });
         },
     }
