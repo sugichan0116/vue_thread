@@ -1,6 +1,7 @@
 import {
     collection_ref,
-    postDoc
+    postDoc,
+    uploadImage,
 } from "./config.js";
 
 import {
@@ -32,6 +33,9 @@ const fire = new Vue({
         toDate: function (date) {
             return (date == undefined) ? "???" : moment(date.toDate()).fromNow();
         },
+        has_image: function (doc) {
+            return doc.content.image_path
+        }
     },
     computed: {
         loading: function () {
@@ -47,6 +51,7 @@ const form = new Vue({
         comment: "",
         show_form: false,
         post_log: "",
+        image_path: "",
     },
     methods: {
         post: function () {
@@ -60,16 +65,26 @@ const form = new Vue({
 
             console.log("post", this.comment);
 
-            postDoc(this.author, this.comment)
+            postDoc(this.author, this.comment, this.image_path)
                 .then(function (){
                     console.log("done.")
                 });
 
             this.comment = "";
+            this.image_path = "";
         },
         awake_form: function () {
             this.show_form = true;
-        }
+        },
+        upload: function (e) {
+            const image = e.target.files[0];
+            if(image == null) return;
+
+            uploadImage(image, (url) => {
+                console.log(this);
+                this.image_path = url;
+            });
+        },
     }
 });
 

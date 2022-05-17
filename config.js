@@ -22,6 +22,12 @@ import {
     serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-firestore.js";
 
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL,
+} from "https://www.gstatic.com/firebasejs/9.8.0/firebase-storage.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -39,21 +45,31 @@ export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const collection_path = "testcollection";
 export const collection_ref = collection(db, collection_path);
+export const storage = getStorage(app);
 
-export const postDoc = async function (author, comment)
+export const postDoc = async function (author, comment, image_path=null)
 {
     await setDoc(doc(collection_ref), {
         comment: comment,
         author: author,
         date: Date.now(),
+        image_path: image_path,
         create_at: serverTimestamp(),
     });
+}
 
-    // const general = doc(db, "setting", "general");
-    //
-    // getDoc(general)
-    //     .then(function (snap) {
-    //         const count = snap.get("count");
-    //         console.log("count=", count);
-    //     })
+export const uploadImage = function (file, callback)
+{
+    const storage_path = "images/" + Date.now();
+    const storage_ref = ref(storage, storage_path);
+
+    uploadBytes(storage_ref, file).then((snapshot) => {
+        console.log('Uploaded a image');
+        // const url = getDownloadURL(storage_ref);
+        // callback(url);
+        getDownloadURL(storage_ref)
+            .then((url) => {
+                callback(url);
+            });
+    });
 }

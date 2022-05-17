@@ -30,6 +30,9 @@
                                   placeholder="...">
                     </textarea>
                     </div>
+                    <div>
+                        <input type="file" @change="upload">
+                    </div>
                     <button type="submit">Post</button>
                     <div id="post_log">{{ post_log }}</div>
                 </form>
@@ -68,7 +71,9 @@
                     </div>
 
                     <div class="content">{{ doc.content.comment.replace(/\\n/g,'\n') }}</div>
-
+                    <div class="image-container" v-if="has_image(doc)">
+                        <img :src="doc.content.image_path" alt="">
+                    </div>
                 </div>
             </div>
 
