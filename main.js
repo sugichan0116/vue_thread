@@ -87,7 +87,7 @@ const form = new Vue({
             const image = e.target.files[0];
             if(image == null) return;
 
-            const allowExtensions = /.(jpeg|jpg|png|bmp|gif|heic)$/; // 許可する拡張子
+            const allowExtensions = /.(jpeg|jpg|png|bmp|gif|heic|heif|hevc)$/i; // 許可する拡張子
             if (!image.name.match(allowExtensions)) {
                 this.post_log = "〇ろすぞ"
                 document.getElementById('input_file').value = ''
