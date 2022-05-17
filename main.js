@@ -75,8 +75,10 @@ const form = new Vue({
                     console.log("done.")
                 });
 
+            //init
             this.comment = "";
             this.image_path = "";
+            document.getElementById('input_file').value = ''
         },
         awake_form: function () {
             this.show_form = true;
