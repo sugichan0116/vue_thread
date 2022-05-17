@@ -51,34 +51,40 @@ const form = new Vue({
         comment: "",
         show_form: false,
         post_log: "",
-        image_path: "",
-        image_uploading: false,
+        local_path:"",
     },
     methods: {
         post: function () {
             this.post_log = "";
-            if(this.comment === "" && image_path == "") {
+            if(this.comment === "" && this.local_path == "") {
                 this.post_log = "メッセージを入力してね！"
-                return;
-            }
-            if(this.image_uploading) {
-                this.post_log = "画像をアップロード中だよ！"
                 return;
             }
 
             this.comment.replace(/\n/g,'\\n');
 
-            console.log("post", this.comment);
+            console.log("post", this.comment, this.local_path);
 
-            postDoc(this.author, this.comment, this.image_path)
-                .then(function (){
-                    console.log("done.")
+
+            const posting = (url="") => {
+                postDoc(this.author, this.comment, url)
+                    .then(function (){
+                        console.log("done.")
+                    });
+
+                //init
+                this.comment = "";
+                this.init_file();
+            };
+
+            if(this.local_path) {
+                uploadImage(this.local_path, (url) => {
+                    console.log(this, url);
+                    posting(url);
                 });
-
-            //init
-            this.comment = "";
-            this.image_path = "";
-            document.getElementById('input_file').value = ''
+            } else {
+                posting();
+            }
         },
         awake_form: function () {
             this.show_form = true;
@@ -87,20 +93,25 @@ const form = new Vue({
             const image = e.target.files[0];
             if(image == null) return;
 
-            const allowExtensions = /.(jpeg|jpg|png|bmp|gif|heic|heif|hevc)$/i; // 許可する拡張子
-            if (!image.name.match(allowExtensions)) {
-                this.post_log = "〇ろすぞ"
-                document.getElementById('input_file').value = ''
+            const limit_size = 10;
+            if (image.size > limit_size * 1024 * 1024) {
+                this.post_log = `ファイルサイズは ${limit_size} MB 以下にしてね！`;
+                this.init_file();
                 return;
             }
 
-            this.image_uploading = true;
-            uploadImage(image.name, (url) => {
-                console.log(this);
+            if (!image.type.includes('image')) {
+                this.post_log = "画像ファイル以外はアップロードできないよ";
+                console.log("ころすぞ");
+                this.init_file();
+                return;
+            }
 
-                this.image_path = url;
-                this.image_uploading = false;
-            });
+            this.local_path = image;
+        },
+        init_file: function () {
+            this.local_path = "";
+            document.getElementById('input_file').value = '';
         },
     }
 });
