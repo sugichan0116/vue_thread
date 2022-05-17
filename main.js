@@ -57,7 +57,7 @@ const form = new Vue({
     methods: {
         post: function () {
             this.post_log = "";
-            if(this.comment === "") {
+            if(this.comment === "" && image_path == "") {
                 this.post_log = "メッセージを入力してね！"
                 return;
             }
@@ -87,8 +87,15 @@ const form = new Vue({
             const image = e.target.files[0];
             if(image == null) return;
 
+            const allowExtensions = /.(jpeg|jpg|png|bmp|gif)$/; // 許可する拡張子
+            if (!image.name.match(allowExtensions)) {
+                this.post_log = "〇ろすぞ"
+                document.getElementById('input_file').value = ''
+                return;
+            }
+
             this.image_uploading = true;
-            uploadImage(image, (url) => {
+            uploadImage(image.name, (url) => {
                 console.log(this);
 
                 this.image_path = url;
