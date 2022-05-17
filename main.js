@@ -52,15 +52,21 @@ const form = new Vue({
         show_form: false,
         post_log: "",
         local_path:"",
+        posting: false,
     },
     methods: {
         post: function () {
             this.post_log = "";
+            if(this.posting) {
+                this.post_log = "アップロード中だよ！"
+                return;
+            }
             if(this.comment === "" && this.local_path == "") {
                 this.post_log = "メッセージを入力してね！"
                 return;
             }
 
+            this.posting = true;
             this.comment.replace(/\n/g,'\\n');
 
             console.log("post", this.comment, this.local_path);
@@ -75,6 +81,7 @@ const form = new Vue({
                 //init
                 this.comment = "";
                 this.init_file();
+                this.posting = false;
             };
 
             if(this.local_path) {
