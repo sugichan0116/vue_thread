@@ -116,7 +116,9 @@ button {
     #main .comment small {
       color: green; }
     #main .comment .content {
-      white-space: pre-line; }
+      white-space: pre-line;
+      word-break: break-all;
+      overflow: hidden; }
     #main .comment .image-container {
       max-width: 100%; }
       #main .comment .image-container img {

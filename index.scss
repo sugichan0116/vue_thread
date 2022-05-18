@@ -154,6 +154,8 @@ button {
 
     .content {
       white-space:pre-line;
+      word-break: break-all;
+      overflow: hidden;
     }
 
     .image-container {
